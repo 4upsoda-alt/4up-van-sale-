@@ -48,7 +48,7 @@ async function loadShops() {
             <h3>${shop.name}</h3>
             <p>📍 ${shop.place}</p>
             <button>🧾 Bill</button>
-            <button>🗺 Route</button>
+            <button onclick="openRoute('${shop.place}')">🗺️ Route</button>
         `;
     });
 }
