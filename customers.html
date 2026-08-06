@@ -1,21 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Customers</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<h2>Shop List</h2>
-<div id="shopList"></div>
-
-<button onclick="addShop()">➕ Add Shop</button>
-
-
 <script type="module">
 import { db, collection, addDoc, getDocs } from "./firebase.js";
+
 window.addShop = async function () {
   const shopName = prompt("Shop Name");
   if (!shopName) return;
@@ -24,43 +9,43 @@ window.addShop = async function () {
   if (!place) return;
 
   await addDoc(collection(db, "shops"), {
-  name: shopName,
-  place: place,
-  lat: "",
-  lng: "",
-  created: new Date()
-});
+    name: shopName,
+    place: place,
+    lat: "",
+    lng: "",
+    created: new Date()
+  });
 
   alert("Shop Saved Successfully");
-  window.openRoute = function(place) {
+  loadShops();
+};
+
+window.openRoute = function(place) {
   window.open(
     "https://www.google.com/maps/search/?api=1&query=" +
     encodeURIComponent(place),
     "_blank"
   );
-  }
-  loadShops();
 };
+
 async function loadShops() {
-    const list = document.getElementById("shopList");
-    list.innerHTML = "";
+  const list = document.getElementById("shopList");
+  list.innerHTML = "";
 
-    const snapshot = await getDocs(collection(db, "shops"));
+  const snapshot = await getDocs(collection(db, "shops"));
 
-    snapshot.forEach((doc) => {
-        const shop = doc.data();
+  snapshot.forEach((doc) => {
+    const shop = doc.data();
 
-        list.innerHTML += `
-            <hr>
-            <h3>${shop.name}</h3>
-            <p>📍 ${shop.place}</p>
-            <button>🧾 Bill</button>
-            <button onclick="openRoute('${shop.place}')">🗺️ Route</button>
-        `;
-    });
+    list.innerHTML += `
+      <hr>
+      <h3>${shop.name}</h3>
+      <p>📍 ${shop.place}</p>
+      <button>🧾 Bill</button>
+      <button onclick="openRoute('${shop.place}')">🗺️ Route</button>
+    `;
+  });
 }
 
 loadShops();
 </script>
-</body>
-</html>
