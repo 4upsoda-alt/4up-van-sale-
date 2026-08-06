@@ -15,7 +15,7 @@
 
 
 <script type="module">
-import { db, collection, addDoc } from "./firebase.js";
+import { db, collection, addDoc, getDocs } from "./firebase.js";
 window.addShop = async function () {
   const shopName = prompt("Shop Name");
   if (!shopName) return;
