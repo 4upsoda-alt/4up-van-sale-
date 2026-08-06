@@ -1,12 +1,17 @@
-document.querySelector("button").addEventListener("click", function () {
+function login(){
 
-    const username = document.querySelector('input[type="text"]').value;
-    const password = document.querySelector('input[type="password"]').value;
+let u=document.getElementById("username").value;
+let p=document.getElementById("password").value;
 
-    if(username === "admin" && password === "1234"){
-        alert("Login Successful");
-    }else{
-        alert("Invalid Username or Password");
-    }
+if(u=="admin" && p=="1234"){
 
-});
+document.getElementById("loginPage").style.display="none";
+document.getElementById("dashboard").style.display="block";
+
+}else{
+
+alert("Wrong Username or Password");
+
+}
+
+}
