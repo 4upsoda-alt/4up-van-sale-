@@ -31,6 +31,26 @@ window.addShop = async function () {
 
   alert("Shop Saved Successfully");
 };
+async function loadShops() {
+    const list = document.getElementById("shopList");
+    list.innerHTML = "";
+
+    const snapshot = await getDocs(collection(db, "shops"));
+
+    snapshot.forEach((doc) => {
+        const shop = doc.data();
+
+        list.innerHTML += `
+            <hr>
+            <h3>${shop.name}</h3>
+            <p>📍 ${shop.place}</p>
+            <button>🧾 Bill</button>
+            <button>🗺 Route</button>
+        `;
+    });
+}
+
+loadShops();
 </script>
 </body>
 </html>
