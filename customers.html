@@ -1,4 +1,3 @@
-import { db, collection, addDoc } from "./firebase.js";
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +31,7 @@ import { db, collection, addDoc } from "./firebase.js";
 </div>
 <script type="module" src="firebase.js"></script>
 <script type="module">
+import { db, collection, addDoc } from "./firebase.js";
 window.addShop = async function () {
   const shopName = prompt("Shop Name");
   if (!shopName) return;
