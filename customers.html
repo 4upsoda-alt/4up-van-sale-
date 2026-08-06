@@ -24,10 +24,12 @@ window.addShop = async function () {
   if (!place) return;
 
   await addDoc(collection(db, "shops"), {
-    name: shopName,
-    place: place,
-    created: new Date()
-  });
+  name: shopName,
+  place: place,
+  lat: "",
+  lng: "",
+  created: new Date()
+});
 
   alert("Shop Saved Successfully");
   loadShops();
