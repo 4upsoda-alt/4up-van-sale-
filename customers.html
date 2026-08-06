@@ -30,5 +30,22 @@
 <button>🗺️ Route</button>
 </div>
 <script type="module" src="firebase.js"></script>
+<script type="module">
+window.addShop = async function () {
+  const shopName = prompt("Shop Name");
+  if (!shopName) return;
+
+  const place = prompt("Place");
+  if (!place) return;
+
+  await addDoc(collection(db, "shops"), {
+    name: shopName,
+    place: place,
+    created: new Date()
+  });
+
+  alert("Shop Saved Successfully");
+};
+</script>
 </body>
 </html>
