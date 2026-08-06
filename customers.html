@@ -1,3 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customers</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Shop List</h2>
+
+<div id="shopList"></div>
+
+<button onclick="addShop()">➕ Add Shop</button>
+
 <script type="module">
 import { db, collection, addDoc, getDocs } from "./firebase.js";
 
@@ -41,7 +57,7 @@ async function loadShops() {
       <hr>
       <h3>${shop.name}</h3>
       <p>📍 ${shop.place}</p>
-      <button>🧾 Bill</button>
+      <button onclick="alert('Billing Coming Soon')">🧾 Bill</button>
       <button onclick="openRoute('${shop.place}')">🗺️ Route</button>
     `;
   });
@@ -49,3 +65,6 @@ async function loadShops() {
 
 loadShops();
 </script>
+
+</body>
+</html>
